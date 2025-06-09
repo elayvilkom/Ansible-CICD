@@ -1,13 +1,10 @@
 ---
-hosts: db
-become: true
-tasks:
-  - name: install PostgreSQL
-    ansible.builtin.apt:
-      name: postgresql
-      state: present
-  - name: open port for PostgreSQL
-    ansible.prosix.firewalld:
-      port: 5432/tcp
-      permanent: true
-      immediate: true
+- name: install PostgreSQL
+  ansible.builtin.apt:
+    name: postgresql
+    state: present
+- name: open port for PostgreSQL using UFW
+  community.general.ufw:
+    rule: allow
+    port: 5432
+    proto: tcp

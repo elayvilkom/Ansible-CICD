@@ -1,28 +1,25 @@
 ---
-- hosts: lb
-  become: true
-  tasks:
-    - name: install nginx
-      ansible.builtin.apt:
-        name: nginx
-        state: present
-        update_cache: true
-    
-    - name: enable nginx service
-      ansible.builtin.service:
-        name: nginx
-        state: started
-        enabled: yes
+- name: install nginx
+  ansible.builtin.apt:
+    name: nginx
+    state: present
+    update_cache: true
 
-    - name: open port 80
-      ansible.prosix.firewalld:
-        srvice: http
-        state: enable
-        permanent: true
-        immediate: true
-    - name: Copy nginx.conf with upstream servers
-      ansible.builtin.template:
-        src: nginx.conf.j2
-        dest: /etc/nginx/nginx.conf
-        notify: Restart nginx
+- name: enable nginx service
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: open port for the web app using UFW
+  community.general.ufw:
+    rule: allow
+    port: 80
+    proto: tcp
+
+- name: Copy nginx.conf with upstream servers
+  ansible.builtin.template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+  notify: Restart nginx
 
