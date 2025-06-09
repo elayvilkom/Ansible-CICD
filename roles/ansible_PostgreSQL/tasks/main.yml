@@ -1,3 +1,13 @@
-#SPDX-License-Identifier: MIT-0
 ---
-# tasks file for ansible_PostgreSQL
+hosts: db
+become: true
+tasks:
+  - name: install PostgreSQL
+    ansible.builtin.apt:
+      name: postgresql
+      state: present
+  - name: open port for PostgreSQL
+    ansible.prosix.firewalld:
+      port: 5432/tcp
+      permanent: true
+      immediate: true
