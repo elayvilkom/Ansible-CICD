@@ -13,5 +13,5 @@
   hosts: lb
   become: true
   roles:
-  - ansible_nginx_lb
+    - ansible_nginx_lb
   
