@@ -24,6 +24,10 @@ jobs:
           inventory: |
             [all]
             localhost ansible_connection=local
+            [web]
+            localhost ansible_connection=local
+            [lb]
+            localhost ansible_connection=local
 
           
           args: ''
