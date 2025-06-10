@@ -1,3 +1,8 @@
-#SPDX-License-Identifier: MIT-0
 ---
-# handlers file for ansible_PostgreSQL
+- name: start the app
+  environment:
+    DATABASE_URI: "{{ URI_DB }}"
+    FLASK_APP: myapp
+  commend: flask shell
+  commend: db.create_all()
+  
