@@ -14,7 +14,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+      - name: a
+        run: echo 
       - name: Run Ansible Playbook on Localhost
         uses: dawidd6/action-ansible-playbook@v3
         with:
