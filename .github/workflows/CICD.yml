@@ -18,7 +18,7 @@ jobs:
       - name: Run Ansible Playbook on Localhost
         uses: dawidd6/action-ansible-playbook@v3
         with:
-          playbook: playbook.yml
+          playbook: /Ansible-CICD/Ansible/playbook.yml
 
           # Explicitly target localhost in your inventory
           inventory: |
