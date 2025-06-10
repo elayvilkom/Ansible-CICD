@@ -1,0 +1,29 @@
+name: Run Ansible Playbook Locally on Runner
+
+on:
+  push:
+    paths: 'Ansible/**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run_local_ansible:
+    runs-on: ubuntu-latest 
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Ansible Playbook on Localhost
+        uses: dawidd6/action-ansible-playbook@v3
+        with:
+          playbook: Ansible-CICD/Ansible/playbook.yml
+
+          # Explicitly target localhost in your inventory
+          inventory: |
+            [all]
+            localhost ansible_connection=local
+
+          
+          args: ''
