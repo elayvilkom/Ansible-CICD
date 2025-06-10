@@ -13,7 +13,7 @@
 
 - name: Create a new database with name "{{DB_NAME}}"
   community.postgresql.postgresql_db:
-    name: {{DB_NAME}}
+    name: "{{DB_NAME}}"
 
 
 - name: Create a user for PostgreSQL
