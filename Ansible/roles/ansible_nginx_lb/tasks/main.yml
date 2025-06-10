@@ -16,6 +16,11 @@
     rule: allow
     port: 80
     proto: tcp
+    
+- name: start the service of the ufw
+  service:
+    name: ufw
+    state: started
 
 - name: Copy nginx.conf with upstream servers
   ansible.builtin.template:
