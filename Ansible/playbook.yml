@@ -4,11 +4,11 @@
   become: true
   roles:
     - ansible_decker
-# - name: run all the roles for server db
-#   hosts: db
-#   become: true
-#   roles:
-#     - ansible_PostgreSQL
+- name: run all the roles for server db
+  hosts: db
+  become: true
+  roles:
+    - ansible_PostgreSQL
 - name: run all the roles for server lb
   hosts: lb
   become: true
