@@ -4,4 +4,3 @@ localhost ansible_connection=local
 172.18.133.79
 [lb]
 172.18.133.79
-
