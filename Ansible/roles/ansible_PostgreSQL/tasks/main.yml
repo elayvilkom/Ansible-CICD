@@ -3,7 +3,6 @@
   ansible.builtin.apt:
     name: postgresql
     state: present
-  notify: Create a user for PostgreSQL
 
 - name: open port for PostgreSQL using UFW
   community.general.ufw:
@@ -18,19 +17,18 @@
 
 - name: Create a user for PostgreSQL
   community.postgresql.postgresql_user:
-    login_db: {{DB_NAME}}
-    name: {{DB_USER}}
-    password: {{DB_PASSWORD}}
+    login_db: "{{DB_NAME}}"
+    name: "{{DB_USER}}"
+    password: "{{DB_PASSWORD}}"
     priv: "CONNECT/ALL"
 
 - name: Create 'user' table in dbapp database
   community.postgresql.postgresql_query:
-    db: {{DB_NAME}}                          
-    login_user: {{DB_USER}}                
-    login_password: {{DB_PASSWORD}}       
+    db: "{{DB_NAME}}"                          
+    login_user: "{{DB_USER}}"                
+    login_password: "{{DB_PASSWORD}}"       
     query: |
       CREATE TABLE "user" (
           id SERIAL PRIMARY KEY,
           username VARCHAR(50)
       );
-  notify: export the uri to DATABASE_URL VAR
