@@ -15,7 +15,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: a
-        run: echo 
+        run: echo -e "http {\n    upstream backend {\n        server \"localhost\";\n    }\n\n    server {\n        listen 80;\n\n        location / {\n            proxy_pass http://backend;\n        }\n    }\n}" > Ansible/roles/ansible_nginx_lb/templates/nginx.conf.j2 
+        
       - name: Run Ansible Playbook on Localhost
         uses: dawidd6/action-ansible-playbook@v3
         with:
