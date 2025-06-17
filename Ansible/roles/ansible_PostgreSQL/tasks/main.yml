@@ -22,13 +22,13 @@
     password: "{{DB_PASSWORD}}"
     priv: "CONNECT/ALL"
 
-- name: Create 'user' table in dbapp database
-  community.postgresql.postgresql_query:
-    db: "{{DB_NAME}}"                          
-    login_user: "{{DB_USER}}"                
-    login_password: "{{DB_PASSWORD}}"       
-    query: |
-      CREATE TABLE "user" (
-          id SERIAL PRIMARY KEY,
-          username VARCHAR(50)
-      );
+# - name: Create 'user' table in dbapp database
+#   community.postgresql.postgresql_query:
+#     db: "{{DB_NAME}}"                          
+#     login_user: "{{DB_USER}}"                
+#     login_password: "{{DB_PASSWORD}}"       
+#     query: |
+#       CREATE TABLE "user" (
+#           id SERIAL PRIMARY KEY,
+#           username VARCHAR(50)
+#       );
