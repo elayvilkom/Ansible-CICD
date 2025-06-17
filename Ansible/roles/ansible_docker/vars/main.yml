@@ -1,0 +1,7 @@
+---
+DB_NAME: dbapp
+DB_USER: dbuser
+DB_PASSWORD: 123456
+DB_IP: 172.22.73.146
+DB_PORT: 5432
+URI_DB: "postgresql://{{ DB_USER }}:{{ DB_PASSWORD }}@{{ DB_IP }}:{{ DB_PORT }}/{{ DB_NAME }}"
