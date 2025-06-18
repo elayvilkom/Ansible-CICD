@@ -2,13 +2,19 @@
 - name: run all the roles for server web
   hosts: web
   become: true
+
+  vars_files:
+    - /Ansible/roles/ansible_PostgreSQL/vars/main.yml
+
   roles:
     - ansible_docker
+
 - name: run all the roles for server db
   hosts: db
   become: true
   roles:
     - ansible_PostgreSQL
+
 - name: run all the roles for server lb
   hosts: lb
   become: true

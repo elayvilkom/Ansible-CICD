@@ -1,6 +1,14 @@
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
 http {
     upstream backend {
-        server "{{webservers_ips}}";
+        server 172.18.135.12;
     }
 
     server {

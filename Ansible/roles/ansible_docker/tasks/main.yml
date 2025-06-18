@@ -21,3 +21,8 @@
     name: docker-ce
     state: latest
     update_cache: true
+  
+- name: Build Docker image
+  command: docker build -t {{ docker_image_name }} {{ docker_build_path }}
+  args:
+    chdir: "{{ docker_build_path }}"

@@ -1,0 +1,36 @@
+- name: Install psycopg2 dependency
+  apt:
+    name: python3-psycopg2
+    state: present
+    update_cache: true
+
+- name: Install PostgreSQL
+  apt:
+    name: postgresql
+    state: present
+    update_cache: true
+
+- name: Ensure PostgreSQL is started and enabled
+  service:
+    name: postgresql
+    state: started
+    enabled: true
+
+- name: Allow PostgreSQL through UFW
+  ufw:
+    rule: allow
+    port: "{{ DB_PORT }}"
+    proto: tcp
+
+- name: Create PostgreSQL user
+  become_user: postgres
+  postgresql_user:
+    name: "{{ DB_USER }}"
+    password: "{{ DB_PASSWORD }}"
+    role_attr_flags: CREATEDB
+
+- name: Create PostgreSQL database
+  become_user: postgres
+  postgresql_db:
+    name: "{{ DB_NAME }}"
+    owner: "{{ DB_USER }}"

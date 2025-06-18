@@ -1,6 +1,6 @@
 [web]
 localhost ansible_connection=local
 [db]
-172.22.78.152
+172.22.73.146
 [lb]
-172.22.78.152
+172.22.73.146
